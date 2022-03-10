@@ -2,7 +2,7 @@ const NavBar = () => {
     return (
         <nav>
             <div className="nav-wrapper">
-            <a href="#" className="brand-logo">Usher</a>
+            <a href="#" className="brand-logo">IB</a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li><a href="sass.html">Log Out</a></li>
             </ul>

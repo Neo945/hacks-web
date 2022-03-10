@@ -1,6 +1,17 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import lookup from "../fetchData/lookup";
 
-const CompanyDashboard = () => {
+const CompanyDashboard = (props) => {
+  const [application, setApplication] = useState([]);
+  useEffect(() => {
+    const [data, status] = lookup("POST", JSON.stringify({company: props.company}), '/get/booked/slots', {
+      "Content-type": "application/json"
+    });
+    if (status === 200) {
+      setApplication(data.slots);
+    }
+  })
     return (
         <>
         <div className='applications'>
@@ -18,7 +29,7 @@ const CompanyDashboard = () => {
             </thead>
     
             <tbody>
-              {[1,2,3,4].map(i => (
+              {application.map((data, i) => (
                 <tr key={i}>
                 <td><NavLink to={`/userid`}>Alvin</NavLink></td>
                 <td>Eclair</td>

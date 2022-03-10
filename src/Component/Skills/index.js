@@ -6,7 +6,7 @@ function index() {
       <h4>Add Skills</h4>
       <div>
         <input type="text" />
-        <p>--></p>
+        <p>{"-->"}</p>
       </div>
     </div>
   );

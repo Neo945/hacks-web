@@ -25,11 +25,15 @@ function Index() {
               <form class="col s12" encType="multipart/form-data" id="reg-form" onSubmit={(event) => { 
                 event.preventDefault();
                 const formData = new FormData(event.target);
-                let object = {};
                 formData.append('skills', JSON.stringify(skillList));
-                lookup("POST", formData, "/auth/register", {
+                const [data, status] = lookup("POST", formData, "/auth/register", {
                   "Content-type": "multipart/form-data",
                 });
+                if (status === 201) {
+                  window.location.href = 'http://localhost:3000/dashboard';
+                } else {
+                  alert(JSON.stringify(data));
+                }
               }}>
                 <div class="row">
                   <div class="input-field col s3">
